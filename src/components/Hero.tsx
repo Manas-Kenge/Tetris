@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { useTetris } from '../hooks/useTetris';
 import UpcomingBlocks from './UpcomingBlocks';
 
@@ -10,10 +10,10 @@ export const Hero = () => {
             <Card className="w-[350px]">
                 <CardHeader>
                     <CardTitle>Your Score</CardTitle>
-                    {/* <CardDescription>Deploy your new project in one-click.</CardDescription> */}
                 </CardHeader>
                 <CardContent>
                     <h2> {score} </h2>
+                     {/* @ts-ignore */}
                     {isPlaying && <UpcomingBlocks upcomingBlocks={upcomingBlocks} />}
                 </CardContent>
                 <CardFooter className="flex justify-between">

@@ -22,6 +22,7 @@ export function useTetris() {
     const [isPlaying, setIsPlaying] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
     const [tickSpeed, setTickSpeed] = useState<TickSpeed | null>(null);
+    const [isGameOver, setIsGameOver] = useState(false);
 
     const [
         { board, droppingRow, droppingColumn, droppingBlock, droppingShape },
@@ -40,6 +41,7 @@ export function useTetris() {
         setIsPlaying(true);
         setIsPaused(false);
         setTickSpeed(TickSpeed.Normal);
+        setIsGameOver(false);
         dispatchBoardState({ type: 'start' });
     }, [dispatchBoardState]);
 
@@ -88,6 +90,7 @@ export function useTetris() {
         if (hasCollisions(board, SHAPES[newBlock].shape, 0, 3)) {
             setIsPlaying(false);
             setTickSpeed(null);
+            setIsGameOver(true);
         } else {
             setTickSpeed(TickSpeed.Normal);
         }
@@ -239,6 +242,7 @@ export function useTetris() {
         isPaused,
         score,
         upcomingBlocks,
+        isGameOver
     };
 }
 
